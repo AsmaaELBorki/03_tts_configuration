@@ -1,78 +1,101 @@
-# 02 — Tracking the Sun: Regime and Scaling Structure
+# Repo 3 — Within-Size Structural Configuration
 
-## Purpose
+## What Question This Repository Answers
 
-This repository characterizes **how residential PV system size behavior deviates from canonical baselines under different configurations**.
+When two residential solar systems are similar in size, **in what meaningful and repeatable ways can their designs still differ?**
 
-It consumes the baseline and expected size artifacts produced in **Repo 1** and examines how **scaling behavior and residual structure organize themselves** across time and geography. The objective is to identify **structural regimes** and **stable deviation patterns**, not to explain or predict outcomes.
-
----
-
-## Position in the Program
-
-This repository sits downstream of:
-
-- **Repo 0 — Program-Level Substrate**
-  - schemas, contracts, and dataset definitions  
-- **Repo 1 — Baselines and Expected Size Function**
-  - admissible baseline populations  
-  - discrete expected size function  
-  - residualized baseline observations  
-
-and upstream of any work that would attempt likelihood estimation, risk scoring, or abnormality detection.
-
-No upstream artifacts are modified or reinterpreted here.
+This repository exists to isolate **design structure that is not explained by system size alone**.
 
 ---
 
-## Scope
+## Why This Question Matters (Applied Context)
 
-This repository:
+In real-world residential solar markets, system size does not uniquely determine system design.
 
-- conditions baseline residential system size behavior on configuration variables  
-- examines how residuals vary across time and geography  
-- identifies structural regimes where scaling behavior differs  
-- defines regime boundaries suitable for downstream use  
+Even when capacity (kW) is held constant, installations may differ in:
+- inverter count and allocation
+- component redundancy
+- design conventions associated with installers or programs
+- technical configuration choices permitted within reporting constraints
 
-This repository explicitly does **not**:
+Failing to account for these within-size differences leads downstream analysis to incorrectly attribute configuration-driven effects to scaling or deviation.
 
-- explain causal drivers of system size variation  
-- predict future installations or trends  
-- optimize system size or policy outcomes  
-- redefine baseline validity or expected size  
+This repository prevents that error by explicitly mapping the **degrees of freedom that exist at fixed size**.
 
-All analysis is **descriptive and structural**.
+---
+
+## Analytical Posture
+
+This repository is **structural and descriptive**.
+
+It identifies **how systems of comparable size can differ**, not whether those differences are preferable, risky, or abnormal.
+
+No scaling behavior is analyzed here.
+No regimes are defined here.
+No evaluative judgments are made.
 
 ---
 
 ## Inputs
 
-Consumed canonical artifacts from **Repo 1**:
+This repository consumes upstream artifacts without modification:
 
-- `baseline_residential_system_sizes.csv`  
-- `expected_system_size_by_year.csv`  
-- `baseline_with_expected_size.csv`  
+- Canonical system size baselines
+- Contextual fields permitted by measurement constraints
+- Installation records filtered to comparable size bands
 
-Additional configuration features (e.g. geography, policy era) may be attached within this repository but do not alter upstream definitions.
-
----
-
-## Outputs
-
-Canonical outputs produced by this repository:
-
-- **`deviation_surfaces.csv`**  
-  Structured deviation metrics conditioned on configuration variables, suitable for downstream analysis.
-
-- **`regime_assignments.csv`**  
-  Explicit mapping of observations to identified structural regimes.
-
-- **`regime_boundaries.md`**  
-  Human-readable definitions of regime criteria, boundaries, and scope limits.
-
-All other materials are diagnostic and non-canonical.
+System size is treated as fixed or tightly bounded for all analysis in this repository.
 
 ---
 
-## Repository Structure
+## What This Repository Produces
+
+Outputs from this repository define **within-size structure only**, including:
+
+- Structural degrees of freedom at fixed size
+- Configuration equivalence classes
+- Admissible variation space for residential systems of comparable capacity
+
+These outputs describe **what can vary without changing system size**, not how size itself behaves.
+
+---
+
+## What This Repository Explicitly Does Not Do
+
+This repository does not:
+
+- analyze scaling behavior
+- identify deviation regimes
+- assess oversizing or undersizing
+- assign risk or abnormality
+- interpret deviations from expected size
+
+Any analysis that allows system size to vary meaningfully belongs downstream.
+
+---
+
+## Relationship to Downstream Analysis
+
+Downstream repositories may use the configuration structures defined here to:
+
+- distinguish configuration-driven variation from scaling-driven deviation
+- ensure that regime formation and risk evaluation are not confounded by design degrees of freedom
+- interpret deviation surfaces in a configuration-aware manner
+
+Downstream analysis is not permitted to redefine or reinterpret configuration structure established here.
+
+---
+
+## Governing Constraint
+
+> **System size is treated as fixed in this repository.  
+Any analysis that depends on size variation is out of scope.**
+
+---
+
+## Status
+
+This repository completes the **within-size structural layer** of the Tracking the Sun analytical program.
+
+Its outputs are treated as fixed structural references by all subsequent repositories.
 
