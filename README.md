@@ -1,26 +1,31 @@
-.venv\scripts\sac-Size Structural Configuration
+# Repo 3 — Within-Expected-Size Structural Configuration
 
 ## What Question This Repository Answers
 
-When two residential solar systems are similar in size, **in what meaningful and repeatable ways can their designs still differ?**
+**When residential solar systems are similarly positioned relative to their expected system size, in what meaningful and repeatable ways can their designs still differ?**
 
-This repository exists to isolate **design structure that is not explained by system size alone**.
+This repository isolates **design structure that is not explained by proximity to the expected-size baseline**.
 
 ---
 
 ## Why This Question Matters (Applied Context)
 
-In real-world residential solar markets, system size does not uniquely determine system design.
+In real-world residential solar markets, system design decisions are shaped by
+many factors beyond raw capacity.
 
-Even when capacity (kW) is held constant, installations may differ in:
-- inverter count and allocation
-- component redundancy
-- design conventions associated with installers or programs
-- technical configuration choices permitted within reporting constraints
+However, absolute system size is a poor comparison frame:
+- markets evolve over time
+- typical system sizes shift
+- raw kW comparisons conflate growth with deviation
 
-Failing to account for these within-size differences leads downstream analysis to incorrectly attribute configuration-driven effects to scaling or deviation.
+Instead, systems must be evaluated **relative to what the market expects them to be**, given when and where they were installed.
 
-This repository prevents that error by explicitly mapping the **degrees of freedom that exist at fixed size**.
+Failing to account for this leads downstream analysis to:
+- misattribute normal configuration patterns to scaling behavior
+- interpret market-standard designs as anomalous
+- confound deviation with temporal or contextual drift
+
+This repository prevents that error by explicitly mapping **what can vary once expected system size is held fixed**.
 
 ---
 
@@ -28,11 +33,32 @@ This repository prevents that error by explicitly mapping the **degrees of freed
 
 This repository is **structural and descriptive**.
 
-It identifies **how systems of comparable size can differ**, not whether those differences are preferable, risky, or abnormal.
+It identifies:
+- which configuration attributes remain stable
+- which exhibit limited degrees of freedom
+- which do *not* explain deviation once expectation is accounted for
 
-No scaling behavior is analyzed here.
-No regimes are defined here.
-No evaluative judgments are made.
+It does **not**:
+- analyze scaling behavior
+- define regimes
+- evaluate oversizing or undersizing
+- assign risk, abnormality, or preference
+
+---
+
+## Reference Frame: Expected System Size
+
+All analysis in this repository is conducted **relative to an expected-size baseline**.
+
+Expected system size is:
+- empirically derived upstream (Repo 2)
+- defined as typical residential system capacity given installation year
+- treated as a reference surface rather than an outcome
+
+Systems are grouped into **expected-size deviation bands** (e.g., very close to expectation, moderately deviant), and configuration variables are analyzed **within those bands**.
+
+Absolute observed size is allowed to vary within bands.  
+What is fixed is **position relative to expectation**, not raw capacity.
 
 ---
 
@@ -40,23 +66,23 @@ No evaluative judgments are made.
 
 This repository consumes upstream artifacts without modification:
 
-- Canonical system size baselines
-- Contextual fields permitted by measurement constraints
-- Installation records filtered to comparable size bands
+- Canonical expected-size baselines
+- System-level installation records
+- Measurement constraints defined upstream
 
-System size is treated as fixed or tightly bounded for all analysis in this repository.
+All system comparisons are conditional on **expected-size proximity**, not on absolute kW equality.
 
 ---
 
 ## What This Repository Produces
 
-Outputs from this repository define **within-size structure only**, including:
+Outputs from this repository define **within-expected-size structure only**, including:
 
-- Structural degrees of freedom at fixed size
-- Configuration equivalence classes
-- Admissible variation space for residential systems of comparable capacity
+- configuration attributes that are invariant near expectation
+- limited degrees of freedom that remain once expectation is satisfied
+- structural constraints inherited by downstream scaling analysis
 
-These outputs describe **what can vary without changing system size**, not how size itself behaves.
+These outputs describe **what can vary without violating expected sizing behavior**, not how system size itself behaves.
 
 ---
 
@@ -64,38 +90,39 @@ These outputs describe **what can vary without changing system size**, not how s
 
 This repository does not:
 
-- analyze scaling behavior
+- compare systems by absolute capacity alone
+- analyze how system size scales
 - identify deviation regimes
 - assess oversizing or undersizing
-- assign risk or abnormality
-- interpret deviations from expected size
+- assign abnormality or risk
 
-Any analysis that allows system size to vary meaningfully belongs downstream.
+Any analysis that relies on **meaningful variation in expected system size** belongs downstream.
 
 ---
 
 ## Relationship to Downstream Analysis
 
-Downstream repositories may use the configuration structures defined here to:
+Downstream repositories use the structural constraints established here to:
 
-- distinguish configuration-driven variation from scaling-driven deviation
-- ensure that regime formation and risk evaluation are not confounded by design degrees of freedom
-- interpret deviation surfaces in a configuration-aware manner
+- distinguish true scaling-driven deviation from configuration noise
+- ensure regime formation is not confounded by design heterogeneity
+- interpret deviation surfaces relative to a validated expected-size reference
 
-Downstream analysis is not permitted to redefine or reinterpret configuration structure established here.
+Downstream analysis is not permitted to redefine or reinterpret expected-size conditioning established here.
 
 ---
 
 ## Governing Constraint
 
-> **System size is treated as fixed in this repository.  
-Any analysis that depends on size variation is out of scope.**
+> **Expected system size is treated as fixed in this repository.  
+> Systems are compared only within bands defined by deviation from that expectation.  
+> Any analysis that depends on variation in expected system size is out of scope.**
 
 ---
 
 ## Status
 
-This repository completes the **within-size structural layer** of the Tracking the Sun analytical program.
+This repository completes the **within-expected-size structural layer** of the
+*Tracking the Sun* analytical program.
 
-Its outputs are treated as fixed structural references by all subsequent repositories.
-
+Its outputs are treated as **fixed structural references** by all subsequent repositories.
